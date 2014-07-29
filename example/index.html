@@ -60,6 +60,11 @@ var App = React.createClass({
 //now the wiring.
 var app = React.renderComponent(App({ path: window.location.pathname }), document.body);
 
+// This does the event binding needed, should be set to the same as the renderComponent root node
+// you can call it without a node and it will bind to `window` (normal for full page routing).
+// or you can not call it at all, and it will bind to `window`.
+//Router.Navigator.setAppRoot(document.body);
+
 //add our navigation logic.
 Router.Navigator.onNavigate(function(newPath){
   app.setProps({ path: newPath });

@@ -1,10 +1,10 @@
 {
   "name": "react-simple-router",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A very simple react router. simple as in simple code, not simple use...",
   "main": "index.js",
   "scripts": {
-    "build-example": "browserify -d -r ./index:react-simple-router -r react > example/bundle.js"
+    "example": "cd example && node server.js"
   },
   "author": "Chris Walker <chris@thechriswalker.net>",
   "license": "MIT",

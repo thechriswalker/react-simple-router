@@ -1,7 +1,7 @@
 {
   "name": "react-simple-router",
-  "version": "0.0.3",
-  "description": "A very simple react router. simple as in simple code, not simple use...",
+  "version": "0.0.4",
+  "description": "A simple server-side router/navigation component for ReactJS",
   "main": "index.js",
   "scripts": {
     "example": "cd example && node server.js"

@@ -19,7 +19,7 @@ var NotFound = React.createClass({
 
 var PageOne = React.createClass({
   render: function(){
-    return PageAny({matches: {pageNumber: 1}});
+    return PageAny({pageNumber: 1});
   }
 });
 
@@ -29,7 +29,7 @@ var PageAny = React.createClass({
     var anotherPage = "/page/"+Math.floor(Math.random()*1000);
 
     return React.DOM.div(null,
-      React.DOM.h1(null, "Page "+this.props.matches.pageNumber+"! "),
+      React.DOM.h1(null, "Page "+this.props.pageNumber+"! "),
       React.DOM.p(null, React.DOM.a({href: "/not_found_here" }, "404")),
       React.DOM.p(null, React.DOM.a({href: anotherPage }, anotherPage)),
       React.DOM.p(null, React.DOM.a({href: "https://google.com"}, "external link")),

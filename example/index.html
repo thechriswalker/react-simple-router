@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+  <title>react-simple-router example</title>
+</head>
+<body>
+  <p>Waiting to load. This will fail if the javascript isn't browserified yet.</p>
+  <p>Try running the server with: <kbd>node server.js --rebuild</kbd></p>
+  <script src="/bundle.js"></script>
+  <script>
+var React = require("react"),
+    Router = require("react-simple-router");
+
+var NotFound = React.createClass({
+  render: function(){
+    return React.DOM.div(null, "Page Not Found: "+this.props.path);
+  }
+});
+
+var PageOne = React.createClass({
+  render: function(){
+    return PageAny({matches: {pageNumber: 1}});
+  }
+});
+
+var PageAny = React.createClass({
+  render: function(){
+
+    var anotherPage = "/page/"+Math.floor(Math.random()*1000);
+
+    return React.DOM.div(null,
+      React.DOM.h1(null, "Page "+this.props.matches.pageNumber+"! "),
+      React.DOM.p(null, React.DOM.a({href: "/not_found_here" }, "404")),
+      React.DOM.p(null, React.DOM.a({href: anotherPage }, anotherPage)),
+      React.DOM.p(null, React.DOM.a({href: "https://google.com"}, "external link")),
+      React.DOM.p({onClick: this.programmaticNavigate, style: { "cursor": "pointer" }}, "home (n.b. this is clickable)")
+    );
+  },
+  programmaticNavigate: function(ev){
+    ev.preventDefault();
+    Router.Navigator.navigate("/");
+  }
+});
+
+var _routes = [
+  { pattern:"/", handler: PageOne },
+  { pattern:"/page/:pageNumber", handler: PageAny}
+];
+
+var App = React.createClass({
+  render: function(){
+    return Router.Component({
+      path: this.props.path,
+      routes: _routes,
+      notFound: NotFound
+    });
+  }
+});
+
+//now the wiring.
+var app = React.renderComponent(App({ path: window.location.pathname }), document.body);
+
+//add our navigation logic.
+Router.Navigator.onNavigate(function(newPath){
+  app.setProps({ path: newPath });
+});
+</script>
+</body>
+</html>

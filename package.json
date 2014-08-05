@@ -1,6 +1,6 @@
 {
   "name": "react-simple-router",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A simple server-side router/navigation component for ReactJS",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   "author": "Chris Walker <chris@thechriswalker.net>",
   "license": "MIT",
   "repository": {
-    "type" : "git", 
+    "type" : "git",
     "url" : "http://github.com/thechriswalker/react-simple-router.git"
   },
   "dependencies": {

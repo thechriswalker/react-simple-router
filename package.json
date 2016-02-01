@@ -17,7 +17,7 @@
     "lodash": "^3.1.0"
   },
   "peerDependencies": {
-    "react": "^0.13.0"
+    "react": "^0.14.0"
   },
   "devDependencies": {
     "browserify": "^5.9.1"

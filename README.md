@@ -37,21 +37,20 @@ navigation, so regular links Just Work™.
 var React = require("react"),
     Router = require("react-simple-router");
 
-var NotFound = React.createClass({
-  render: function(){
+class NotFound extends React.Component {
+  render() {
     return React.DOM.div(null, "Page Not Found: "+this.props.path);
   }
-});
+}
 
-var PageOne = React.createClass({
-  render: function(){
+class PageOne extends React.Component {
+  render() {
     return PageAny({pageNumber: 1});
   }
-});
+}
 
-var PageAny = React.createClass({
-  render: function(){
-
+class PageAny extends React.Component {
+  render() {
     var anotherPage = "/page/"+Math.floor(Math.random()*1000);
 
     return React.DOM.div(null,
@@ -61,27 +60,28 @@ var PageAny = React.createClass({
       React.DOM.p(null, React.DOM.a({href: "https://google.com"}, "external link")),
       React.DOM.p({onClick: this.programmaticNavigate, style: { "cursor": "pointer" }}, "home (n.b. this is clickable)")
     );
-  },
-  programmaticNavigate: function(ev){
+  }
+
+  programmaticNavigate(ev) {
     ev.preventDefault();
     Router.Navigator.navigate("/");
   }
-});
+}
 
 var _routes = [
   { pattern:"/", handler: PageOne },
   { pattern:"/page/:pageNumber", handler: PageAny}
 ];
 
-var App = React.createClass({
-  render: function(){
+class App extends React.Component {
+  render() {
     return Router.Component({
       path: this.props.path,
       routes: _routes,
       notFound: NotFound
     });
   }
-});
+}
 
 //now the wiring.
 var app = React.renderComponent(App({ path: window.location.pathname }), document.body);
